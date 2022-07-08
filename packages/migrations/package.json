@@ -1,0 +1,33 @@
+{
+    "name": "migrations",
+    "version": "1.0.0",
+    "description": "Package to handle Db migrations for all microservices DBs",
+    "main": "lib/migrations.js",
+    "scripts": {
+        "db:migrate": "run-s db:migrate:*",
+        "db:migrate-down": "run-s db:migrate-down:*",
+        "db:migrate-reset": "run-s db:migrate-reset:*",
+        "db:migrate:chatservice": "./node_modules/.bin/db-migrate up --config 'chatservice/database.json' -m 'chatservice'",
+        "db:migrate-down:chatservice": "./node_modules/.bin/db-migrate down --config 'chatservice/database.json' -m 'chatservice'",
+        "db:migrate-reset:chatservice": "./node_modules/.bin/db-migrate reset --config 'chatservice/database.json' -m 'chatservice'",
+        "db:migrate:notificationservice": "./node_modules/.bin/db-migrate up --config 'notificationservice/database.json' -m 'notificationservice'",
+        "db:migrate-down:notificationservice": "./node_modules/.bin/db-migrate down --config 'notificationservice/database.json' -m 'notificationservice'",
+        "db:migrate-reset:notificationservice": "./node_modules/.bin/db-migrate reset --config 'notificationservice/database.json' -m 'notificationservice'",
+        "db:migrate:authenticationservice": "./node_modules/.bin/db-migrate up --config 'authenticationservice/database.json' -m 'authenticationservice'",
+        "db:migrate-down:authenticationservice": "./node_modules/.bin/db-migrate down --config 'authenticationservice/database.json' -m 'authenticationservice'",
+        "db:migrate-reset:authenticationservice": "./node_modules/.bin/db-migrate reset --config 'authenticationservice/database.json' -m 'authenticationservice'"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "db-migrate": "^1.0.0-beta.18",
+        "db-migrate-pg": "^1.2.2",
+        "dotenv": "^16.0.0",
+        "dotenv-extended": "^2.9.0",
+        "kindof": "^2.0.0"
+    },
+    "devDependencies": {
+        "@types/dotenv": "^8.2.0",
+        "npm-run-all": "^4.1.5"
+    }
+}
